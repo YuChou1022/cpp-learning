@@ -1,0 +1,32 @@
+# Visual Studio local state and generated build output
+.vs/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.user
+*.suo
+*.obj
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.idb
+*.ipch
+*.tlog
+*.log
+*.lastbuildstate
+# Local repair backups and encoding test projects
+.encoding-backup*/
+.encoding-verification/
+*.bak
+*.encoding-backup-*
+# Credentials
+.env
+.env.*
+*.pem
+*.key

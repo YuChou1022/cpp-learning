@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="内存四区.vcxproj" Id="b22df07e-8397-4f37-8857-22c3675a5819" />
+</Solution>
