@@ -10,9 +10,15 @@ public:
 	//编译阶段就分配内存
 	//类内声明，类外初始化操作
 	static int m_A;
+
+	//静态成员变量也是有访问权限的
+private:
+	static int m_B;
+
 };
 
 int Person::m_A = 100;
+int Person::m_B = 200;
 
 void test01()
 {
@@ -36,6 +42,8 @@ void test02()
 	cout <<p.m_A << endl;
 	//2.通过变量名进行访问
 	cout << Person::m_A << endl;
+
+	//cout << Person::m_B << endl;类外不可以访问
 }
 
 int main()

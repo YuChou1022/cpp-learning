@@ -39,5 +39,8 @@
     <ClCompile Include="静态成员-静态成员变量.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="静态成员-静态成员函数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
