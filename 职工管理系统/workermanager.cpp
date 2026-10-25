@@ -223,40 +223,6 @@ void WorkerManager::Del_Emp()
 	system("cls");
 }
 
-//清空所有数据
-void WorkerManager::Clean_File()
-{
-	cout << "确定清空所有数据？1-确定  2-返回" << endl;
-	int select = 0;
-	cin >> select;
-
-	if (select == 1)
-	{
-		//ios::trunc 打开即把文件内容清空
-		ofstream ofs;
-		ofs.open(FILENAME, ios::trunc);
-		ofs.close();
-
-		//内存里的数据也一起清掉
-		if (this->m_EmpArray != NULL)
-		{
-			delete[] this->m_EmpArray;
-			this->m_EmpArray = NULL;
-		}
-		this->m_EmpNum = 0;
-		this->m_FileIsEmpty = true;
-
-		cout << "清空成功" << endl;
-	}
-	else
-	{
-		cout << "已取消" << endl;
-	}
-
-	system("pause");
-	system("cls");
-}
-
 //退出功能
 void WorkerManager::exitSystem()
 {
@@ -360,46 +326,6 @@ void WorkerManager::Show_Emp()
 	system("cls");
 }
 
-//删除职工
-void WorkerManager::Del_Emp()
-{
-	if (this->m_FileIsEmpty)
-	{
-		cout << "文件不存在或者记录为空" << endl;
-	}
-	else
-	{
-		//按照职工编号删除
-		cout << "请输入想要删除职工编号：" << endl;
-		int id = 0;
-		cin >> id;
-
-		int index = this->IsExist(id);
-
-		if (index != -1)//说明存在并找到位置
-		{
-			//数据前移
-			for (int i = index;i < this->m_EmpNum - 1;i++)
-			{
-				this->m_EmpArray[i]=this->m_EmpArray[i+1];
-			}
-			this->m_EmpNum--;//更新人数
-			//同步更新到文件中
-			this->save();
-
-			cout << "删除成功" << endl;
-		}
-		else
-		{
-			cout << "为找到" << endl;
-		}
-	}
-
-	//按任意键清屏
-	system("pause");
-	system("cls");
-}
-
 //判断职工是否存在
 int WorkerManager::IsExist(int id)
 {
@@ -415,6 +341,8 @@ int WorkerManager::IsExist(int id)
 			break;
 		}
 	}
+
+	return index;
 }
 
 //修改职工
@@ -460,7 +388,7 @@ void WorkerManager::Mod_Emp()
 			case 1:
 				worker = new Employee(newId, newName, dSelect);
 				break;
-			case2:
+			case 2:
 				worker = new Manager(newId, newName, dSelect);
 				break;
 			case 3:
@@ -661,6 +589,12 @@ WorkerManager::~WorkerManager()
 {
 	if (this->m_EmpArray != NULL)
 	{
+		//先释放每个职工对象，再释放指针数组
+		for (int i = 0;i < this->m_EmpNum;i++)
+		{
+			delete this->m_EmpArray[i];
+			this->m_EmpArray[i] = NULL;
+		}
 		delete[] this->m_EmpArray;
 		this->m_EmpArray = NULL;
 	}
