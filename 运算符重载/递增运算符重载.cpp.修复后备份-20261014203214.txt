@@ -1,0 +1,33 @@
+﻿#include <iostream>
+
+class Number {
+    int v;
+public:
+    Number(int n = 0) : v(n) {}
+
+    // 前缀 ++
+    Number& operator++() {
+        ++v;
+        return *this;
+    }
+
+    // 后缀 ++
+    Number operator++(int) {
+        Number tmp(*this);
+        v++;
+        return tmp;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Number& n) {
+        return os << n.v;
+    }
+};
+
+int main() {
+    Number a(5);
+    std::cout << a << '\n';     // 输出 5
+    std::cout << ++a << '\n';   // 输出 6（前缀）
+    std::cout << a++ << '\n';   // 输出 6（后缀返回旧值）
+    std::cout << a << '\n';     // 输出 7
+    return 0;
+}

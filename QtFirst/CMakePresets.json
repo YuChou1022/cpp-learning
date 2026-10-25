@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "vs2026-x64",
+      "displayName": "Qt 6.8.1 / Visual Studio 2026 x64",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {"CMAKE_PREFIX_PATH": "D:/Qt"}
+    }
+  ],
+  "buildPresets": [
+    {"name": "debug", "configurePreset": "vs2026-x64", "configuration": "Debug"},
+    {"name": "release", "configurePreset": "vs2026-x64", "configuration": "Release"}
+  ]
+}

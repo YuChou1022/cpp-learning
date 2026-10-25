@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="继承.vcxproj" Id="80dcef7a-dec1-4d06-8a5a-0c59e42fe028" />
+</Solution>
